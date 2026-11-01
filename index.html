@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Неофициальная фан-страница об аниме «Наруто»: топ персонажей, история сериала, герои и интерактивные печати дзюцу.">
+<title>Наруто — свиток ниндзя Конохи</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;600&family=Russo+One&display=swap" rel="stylesheet">
+<style>
+/* ===== Токены и база (mobile-first) ===== */
+:root{
+  --bg:#F2E6CF; --ink:#141B2D; --org:#E4600A; --blue:#1479B8; --card:#FFF6E3; --line:rgba(20,27,45,.25);
+  --head:"Russo One",Onest,system-ui,sans-serif;
+  color-scheme:light; box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0B0F1A;--ink:#F2E6CF;--org:#FF7A00;--blue:#4CC9FF;--card:#141B2D;--line:rgba(242,230,207,.25);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0B0F1A;--ink:#F2E6CF;--org:#FF7A00;--blue:#4CC9FF;--card:#141B2D;--line:rgba(242,230,207,.25);color-scheme:dark}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Onest,system-ui,"Segoe UI",Arial,sans-serif;font-size:17px;line-height:1.55;overflow-x:hidden}
+.wrap{max-width:1200px;margin:0 auto;padding:0 18px}
+img{display:block;max-width:100%}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid var(--org);outline-offset:3px}
+.skip{position:absolute;left:12px;top:-60px;background:var(--org);color:#fff;padding:8px 14px;z-index:50;font-weight:600}
+.skip:focus{top:12px}
+
+h2{font-family:var(--head);font-weight:400;font-size:clamp(28px,8vw,56px);line-height:1.05;margin:0 0 24px}
+h2 b{color:var(--org);font-weight:400}
+section{padding:44px 0}
+
+/* ===== Шапка ===== */
+.site-head{border-bottom:3px solid var(--ink)}
+.site-head .wrap{display:flex;flex-direction:column;gap:10px;padding-top:14px;padding-bottom:14px}
+.logo{font-family:var(--head);font-size:22px;text-decoration:none;color:var(--org);-webkit-text-stroke:1px var(--ink)}
+.nav ul{display:flex;flex-wrap:wrap;gap:6px 18px;list-style:none;margin:0;padding:0;font-weight:600;font-size:15px}
+.nav a{text-decoration:none;border-bottom:2px solid transparent}
+.nav a:hover{border-color:var(--org)}
+
+/* ===== Главный экран ===== */
+.hero{display:grid;gap:30px;padding:36px 0 48px}
+.kicker{font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:13px;color:var(--blue);margin:0 0 8px}
+h1{margin:0;font-family:var(--head);font-weight:400;font-size:clamp(52px,17vw,190px);line-height:.9;color:var(--org);-webkit-text-stroke:2px var(--ink);text-shadow:5px 5px 0 var(--ink);overflow-wrap:anywhere}
+.lede{max-width:36ch;font-size:clamp(17px,4.6vw,22px);margin:22px 0 0}
+.orbwrap{display:flex;flex-direction:column;align-items:center;gap:14px;margin:0}
+#orb{position:relative;width:min(78vw,340px);aspect-ratio:1;border:0;background:none;padding:0;cursor:pointer;touch-action:none;-webkit-tap-highlight-color:transparent}
+#orb svg{width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 24px var(--blue));transition:transform .2s}
+#orb.hold svg{transform:scale(1.14)}
+.ring{position:absolute;inset:0;border-radius:50%;border:4px solid var(--blue);opacity:0;pointer-events:none}
+.ring.go{animation:burst .7s ease-out}
+@keyframes burst{from{opacity:.9;transform:scale(.8)}to{opacity:0;transform:scale(2)}}
+.meter{width:min(78vw,340px);height:12px;border:3px solid var(--ink);border-radius:8px;overflow:hidden}
+#bar{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--org))}
+#cstat{margin:0;font-weight:600;min-height:1.5em;text-align:center}
+
+/* ===== Топ-3 ===== */
+.top{list-style:none;margin:0;padding:0;display:grid;gap:18px}
+.top figure{margin:0;background:var(--card);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink)}
+.top img{width:100%;aspect-ratio:1;object-fit:cover;background:var(--line)}
+.top figcaption{display:flex;align-items:center;gap:12px;padding:12px 14px;font-weight:600}
+.top figcaption b{font-family:var(--head);font-weight:400;font-size:30px;color:var(--org);line-height:1}
+
+/* ===== Путь сериала ===== */
+.tl{list-style:none;margin:0 0 0 8px;padding:0;border-left:4px solid var(--ink)}
+.tl li{position:relative;padding:0 0 22px 24px}
+.tl li::before{content:"";position:absolute;top:2px;left:-14px;width:20px;height:20px;background:var(--org);border:4px solid var(--ink);border-radius:50%}
+.tl time{display:block;font-family:var(--head);font-size:28px;color:var(--org);line-height:1.1}
+.tl span{font-size:16px}
+
+/* ===== Герои ===== */
+.cards{display:grid;gap:18px}
+.card{position:relative;background:var(--card);border:3px solid var(--ink);padding:24px 18px 18px;min-height:230px;display:flex;flex-direction:column;box-shadow:6px 6px 0 var(--ink);transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translate(-3px,-3px);box-shadow:10px 10px 0 var(--ink)}
+.card::before{content:"";position:absolute;top:-3px;left:-3px;right:-3px;height:12px;background:var(--c)}
+.jp{writing-mode:vertical-rl;font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif CJK JP",serif;font-weight:900;font-size:36px;color:var(--c);align-self:flex-end;line-height:1}
+.card h3{font-family:var(--head);font-weight:400;font-size:26px;line-height:1.1;margin:auto 0 4px}
+.rank{align-self:flex-start;border:2px solid var(--ink);padding:1px 9px;font-weight:600;font-size:13px;margin:0 0 10px}
+.card p{margin:0;font-size:16px}
+
+/* ===== Печати ===== */
+.seals{background:var(--card);border:3px solid var(--ink);padding:18px;box-shadow:7px 7px 0 var(--ink)}
+.slots{display:flex;gap:8px;margin:0 0 16px;flex-wrap:wrap;min-height:44px}
+.slot{min-width:78px;height:40px;border:3px dashed var(--line);display:grid;place-items:center;font-weight:600;font-size:13px;padding:0 6px}
+.slot.on{border:3px solid var(--org);color:var(--org)}
+.keys{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.keys button,.rst{font:inherit;font-weight:600;font-size:15px;color:var(--ink);background:var(--bg);border:3px solid var(--ink);padding:12px 2px;cursor:pointer;transition:transform .1s,background .15s}
+.keys button:hover{background:var(--org);color:#fff;transform:translateY(-2px)}
+.rst{margin-top:14px;padding:8px 18px}
+#res{margin:16px 0 0;min-height:3em;font-weight:600;font-size:18px}
+.res-ok{color:var(--org)}
+.combos{margin:20px 0 0;padding:14px 0 0 18px;border-top:2px dashed var(--line);font-size:15px}
+.combos li{margin:4px 0}
+.fx{position:fixed;inset:0;pointer-events:none;opacity:0;z-index:20}
+.fx.go{animation:fx .9s ease-out}
+@keyframes fx{0%{opacity:.85}100%{opacity:0}}
+
+/* ===== Подвал ===== */
+.site-foot{padding:26px 0 60px;font-size:14px;border-top:2px solid var(--line);opacity:.9}
+.site-foot p{margin:0}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .card,.keys button,#orb svg{transition:none}.ring.go,.fx.go{animation:none}
+}
+
+/* ===== Единственный брейкпоинт: от 600px ===== */
+@media (min-width:600px){
+  .wrap{padding:0 clamp(24px,4vw,48px)}
+  body{font-size:18px}
+  section{padding:60px 0}
+  h2{margin-bottom:32px}
+  .site-head .wrap{flex-direction:row;justify-content:space-between;align-items:center}
+  .nav ul{gap:6px 26px;font-size:16px}
+  .hero{grid-template-columns:1.1fr 1fr;align-items:center;gap:clamp(24px,4vw,60px);min-height:90vh;padding:50px 0}
+  h1{font-size:clamp(54px,8vw,108px);-webkit-text-stroke:3px var(--ink);text-shadow:8px 8px 0 var(--ink)}
+  #orb,.meter{width:min(36vw,380px)}
+  .top{grid-template-columns:repeat(3,1fr);gap:24px}
+  .tl{margin:0;border-left:0;border-top:4px solid var(--ink);display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+  .tl li{padding:24px 14px 0 0}
+  .tl li::before{top:-12px;left:0}
+  .cards{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+  .card{min-height:340px;padding:24px 18px 20px}
+  .jp{font-size:40px}
+  .seals{padding:clamp(20px,3vw,36px);box-shadow:9px 9px 0 var(--ink)}
+  .keys{grid-template-columns:repeat(6,1fr);gap:10px}
+  .keys button{font-size:16px;padding:12px 4px}
+  .slot{min-width:84px;height:44px;font-size:14px}
+  #res{font-size:20px}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">К содержимому</a>
+<div class="fx" id="fx" aria-hidden="true"></div>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="logo" href="#top">Наруто</a>
+    <nav class="nav" aria-label="Основная навигация">
+      <ul>
+        <li><a href="#top3">Топ-3</a></li>
+        <li><a href="#history">Сериал</a></li>
+        <li><a href="#heroes">Герои</a></li>
+        <li><a href="#seals">Печати</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="hero" id="top" aria-labelledby="h-main">
+    <div>
+      <p class="kicker">Фан-страница · <span lang="ja">火の意志</span></p>
+      <h1 id="h-main">Наруто</h1>
+      <p class="lede">История шумного мальчишки из Конохи, который мечтал стать Хокаге, и мира шиноби, где чакра решает всё.</p>
+    </div>
+    <figure class="orbwrap">
+      <button id="orb" type="button" aria-label="Зарядить Расенган: удерживайте кнопку или пробел">
+        <svg viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+          <defs><radialGradient id="g"><stop offset="0" stop-color="#fff"/><stop offset=".55" stop-color="#9BE3FF"/><stop offset="1" stop-color="#1F8FD6"/></radialGradient></defs>
+          <circle cx="100" cy="100" r="96" fill="url(#g)"/>
+          <g fill="none" stroke="#fff" stroke-linecap="round" id="rings">
+            <circle cx="100" cy="100" r="86" stroke-width="5" stroke-dasharray="120 80" opacity=".9"/>
+            <circle cx="100" cy="100" r="68" stroke-width="5" stroke-dasharray="90 70" opacity=".85"/>
+            <circle cx="100" cy="100" r="50" stroke-width="4" stroke-dasharray="60 50" opacity=".85"/>
+            <circle cx="100" cy="100" r="32" stroke-width="4" stroke-dasharray="40 30" opacity=".9"/>
+            <circle cx="100" cy="100" r="15" stroke-width="3" stroke-dasharray="20 20"/>
+          </g>
+        </svg>
+        <span class="ring" id="ring"></span>
+      </button>
+      <div class="meter" aria-hidden="true"><div id="bar"></div></div>
+      <figcaption id="cstat" role="status">Зажмите шар, чтобы собрать чакру</figcaption>
+    </figure>
+  </section>
+
+  <section id="top3" aria-labelledby="h-top3">
+    <h2 id="h-top3">Топ-3 персонажа <b>NARUTO99</b></h2>
+    <ol class="top">
+      <li><figure>
+        <img src="73071ad2642f0ce81a13e9a7b78d5092%20(3).jpg" alt="Минато Намиказе" width="360" height="360" loading="lazy">
+        <figcaption><b>1</b> Минато</figcaption>
+      </figure></li>
+      <li><figure>
+        <img src="c21219a717791df798707794b087da25%20(2).jpg" alt="Итачи Утиха" width="360" height="360" loading="lazy">
+        <figcaption><b>2</b> Итачи</figcaption>
+      </figure></li>
+      <li><figure>
+        <img src="db813b8cd6db4ffd083f9d254371f153%20(2).jpg" alt="Сакура Харуно" width="360" height="360" loading="lazy">
+        <figcaption><b>3</b> Сакура</figcaption>
+      </figure></li>
+    </ol>
+  </section>
+
+  <section id="history" aria-labelledby="h-history">
+    <h2 id="h-history">Путь <b>сериала</b></h2>
+    <ol class="tl">
+      <li><time datetime="1999">1999</time><span>Масаси Кисимото начинает мангу в Weekly Shōnen Jump</span></li>
+      <li><time datetime="2002">2002</time><span>Студия Pierrot выпускает аниме: 220 серий</span></li>
+      <li><time datetime="2007">2007</time><span>Старт «Наруто: Ураганные хроники»</span></li>
+      <li><time datetime="2014">2014</time><span>Манга завершена: 700 глав в 72 томах</span></li>
+      <li><time datetime="2017">2017</time><span>Конец «Ураганных хроник» после 500 серий</span></li>
+    </ol>
+  </section>
+
+  <section id="heroes" aria-labelledby="h-heroes">
+    <h2 id="h-heroes">Книга <b>Бинго</b></h2>
+    <div class="cards">
+      <article class="card" style="--c:#FF7A00"><span class="jp" lang="ja" aria-hidden="true">ナルト</span><p class="rank">Седьмой Хокаге</p><h3>Наруто Удзумаки</h3><p>Носитель Девятихвостого. Фирменные приёмы: Расенган и Теневое клонирование.</p></article>
+      <article class="card" style="--c:#4C6BFF"><span class="jp" lang="ja" aria-hidden="true">サスケ</span><p class="rank">Скиталец-мститель</p><h3>Саскэ Утиха</h3><p>Обладатель Шарингана и Риннегана. Главный соперник и друг Наруто.</p></article>
+      <article class="card" style="--c:#E85D9A"><span class="jp" lang="ja" aria-hidden="true">サクラ</span><p class="rank">Медик-ниндзя</p><h3>Сакура Харуно</h3><p>Мастер точного контроля чакры: исцеляет раны и крушит скалы одним ударом.</p></article>
+      <article class="card" style="--c:#7C8AA5"><span class="jp" lang="ja" aria-hidden="true">カカシ</span><p class="rank">Шестой Хокаге</p><h3>Какаши Хатаке</h3><p>Ниндзя-копировщик. Наставник команды №7, знает более тысячи приёмов.</p></article>
+    </div>
+  </section>
+
+  <section id="seals" aria-labelledby="h-seals">
+    <h2 id="h-seals">Печати <b>дзюцу</b></h2>
+    <div class="seals">
+      <div class="slots" id="slots" aria-live="polite" aria-label="Сложенные печати"></div>
+      <div class="keys" id="keys" role="group" aria-label="Печати"></div>
+      <button class="rst" id="rst" type="button">Сбросить</button>
+      <p id="res" role="status">Сложите печати в нужном порядке.</p>
+      <ul class="combos">
+        <li><b>Огненный шар:</b> Змея, Баран, Обезьяна, Кабан, Лошадь, Тигр</li>
+        <li><b>Чидори:</b> Бык, Заяц, Обезьяна</li>
+        <li><b>Призыв:</b> Кабан, Собака, Петух, Обезьяна, Баран</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap"><p>Неофициальная фан-страница. Naruto © Масаси Кисимото / Shueisha, Studio Pierrot. Изображения принадлежат их правообладателям. Сайт с ними не связан.</p></div>
+</footer>
+
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* Расенган */
+  var orb=document.getElementById('orb'),rings=document.querySelectorAll('#rings circle'),bar=document.getElementById('bar'),ring=document.getElementById('ring'),stat=document.getElementById('cstat');
+  var hold=false,charge=0,spin=0,ang=0,full=false;
+  function down(e){if(e&&e.preventDefault)e.preventDefault();hold=true;full=false;orb.classList.add('hold')}
+  function up(){
+    if(!hold)return;hold=false;orb.classList.remove('hold');
+    stat.textContent=charge>=100?'Расенган!':'Чакры не хватило. Держите дольше.';
+    ring.classList.remove('go');void ring.offsetWidth;ring.classList.add('go');charge=charge>=100?0:charge;
+  }
+  orb.addEventListener('pointerdown',down);addEventListener('pointerup',up);addEventListener('pointercancel',up);
+  orb.addEventListener('keydown',function(e){if((e.key===' '||e.key==='Enter')&&!e.repeat){down(e)}});
+  orb.addEventListener('keyup',function(e){if(e.key===' '||e.key==='Enter')up()});
+  function loop(){
+    charge=hold?Math.min(100,charge+1.1):Math.max(0,charge-1.6);
+    if(hold&&charge>=100&&!full){full=true;stat.textContent='Расенган готов. Отпустите!'}
+    spin+=((hold?16:2.2)-spin)*.08;ang+=spin;
+    rings.forEach(function(c,i){c.style.transformOrigin='100px 100px';c.style.transform='rotate('+(ang*(i%2?-1:1)*(1+i*.35)).toFixed(1)+'deg)'});
+    bar.style.width=charge+'%';
+    requestAnimationFrame(loop);
+  }
+  if(!reduce)loop();
+  /* Печати */
+  var names=['Крыса','Бык','Тигр','Заяц','Дракон','Змея','Лошадь','Баран','Обезьяна','Петух','Собака','Кабан'];
+  var J=[
+   {n:'Катон: Великий огненный шар',s:[5,7,8,11,6,2],c:'#FF7A00',t:'Из твоих рук вырывается огромный огненный шар.'},
+   {n:'Чидори',s:[1,3,8],c:'#4CC9FF',t:'Ладонь вспыхивает синими молниями и звенит, как стая птиц.'},
+   {n:'Призыв',s:[11,10,9,8,7],c:'#C9A227',t:'Хлопок, облако дыма, и вызванный зверь уже рядом.'}
+  ];
+  var seq=[],slots=document.getElementById('slots'),keys=document.getElementById('keys'),res=document.getElementById('res'),fx=document.getElementById('fx');
+  names.forEach(function(n,i){var b=document.createElement('button');b.type='button';b.textContent=n;b.addEventListener('click',function(){add(i)});keys.appendChild(b)});
+  function draw(){slots.innerHTML='';seq.forEach(function(i){var d=document.createElement('span');d.className='slot on';d.textContent=names[i];slots.appendChild(d)});if(!seq.length){var d=document.createElement('span');d.className='slot';d.textContent='...';slots.appendChild(d)}}
+  function same(a,b,n){for(var i=0;i<n;i++)if(a[i]!==b[i])return false;return true}
+  function add(i){
+    seq.push(i);
+    var ok=J.filter(function(j){return seq.length<=j.s.length&&same(seq,j.s,seq.length)});
+    var done=J.filter(function(j){return j.s.length===seq.length&&same(seq,j.s,seq.length)})[0];
+    if(done){
+      res.className='res-ok';res.textContent=done.n+'! '+done.t;
+      fx.style.background='radial-gradient(circle at 50% 55%,'+done.c+',transparent 70%)';
+      fx.classList.remove('go');void fx.offsetWidth;fx.classList.add('go');draw();seq=[];return;
+    }
+    if(!ok.length){res.className='';res.textContent='Печати не сложились. Начните заново.';draw();seq=[];return}
+    res.className='';res.textContent='Печатей: '+seq.length+'. Продолжайте.';draw();
+  }
+  document.getElementById('rst').addEventListener('click',function(){seq=[];res.className='';res.textContent='Сложите печати в нужном порядке.';draw()});
+  draw();
+})();
+</script>
+</body>
+</html>
